@@ -1,0 +1,25 @@
+
+export CPP		=/opt/hisi-linux/x86-arm/arm-hisiv200-linux/target/bin/arm-hisiv200-linux-g++
+
+EXEC=read_disk_to_live555
+
+INCLUDE += -I./include -I./extern_src -I./driver_include
+LIBS = -L./lib -lsgutils2
+
+CFAGS = $(INCLUDE) $(LIBS)
+
+all:$(EXEC)
+	
+$(EXEC): $(EXEC).o direct_io_sda.o
+	$(CPP) $(EXEC).o direct_io_sda.o -o $(EXEC)  $(CFAGS)
+	cp $(EXEC) /mnt/yk
+	
+$(EXEC).o:	src/$(EXEC).cpp
+	$(CPP) -c src/$(EXEC).cpp $(CFAGS)
+	
+direct_io_sda.o:	src/direct_io_sda.cpp
+	$(CPP) -c src/direct_io_sda.cpp  $(CFAGS)
+	
+clean:
+	rm -f *.o
+	rm $(EXEC)

@@ -1569,12 +1569,12 @@ return 0;
 
 int outfd;
 /*·µ»ØÎÄ¼şÃèÊö·û*/
-inline int get_hd_fd(){return outfd;};
-extern int init_sda();
+int get_hd_fd(){return outfd;};
+
 
 int init_sda()
 {
-	printf("abc");
+	//printf("abc");
 	int bpt = DEF_BLOCKS_PER_TRANSFER;
 	int out_type = FT_OTHER;
 	int64_t seek = 0;

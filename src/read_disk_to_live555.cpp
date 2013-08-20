@@ -6,17 +6,13 @@
  */
 #include <iostream>
 using namespace std;
-#include "blocks.h"
+#include "yearBlock.h"
 
 
 
 int main(int argc, char *argv[])
 {
-	cout<<"agtg gbc1sadf"<<endl;
-	cout<<"auugtg gbc1sadf"<<endl;
-	if(init_sda()<0)
-	{
-		cout<<"error    "<<"aaaaa"<<endl;
-	}
-	cout << "aaaaaaa"<<endl;
+	cout << "debug"<<endl;
+
+	class yearBlock a(5,6);
 }

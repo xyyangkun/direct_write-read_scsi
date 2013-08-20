@@ -9,23 +9,32 @@
 #define YEARBLOCK_H_
 #include "blocks.h"
 
+
 struct year_queue_data
 {
 	unsigned int queue_size ,queue_head,queue_tail;
 };
-
-class yearBlock
+static char year_data_head[8]={0x59,0x45,0x41,0x52,0xa5,0xa5,0xa5,0xa5};
+class yearBlock:private  blocks
 {
+
 public:
-	yearBlock(){};
-	virtual ~yearBlock(){};
-	/*把年块的数据写入硬盘*/
-	virtual void year_block_save();
+	yearBlock():blocks(YEAR_SEEK,YEAR_HEAD_BLOCK_SIZE*BLOCKSIZE,sizeof(year_data_head),year_data_head)
+	{
+		printf("%s\n",__FUNCTION__);
+
+
+	};
+	yearBlock(int a,int b):blocks(a,b){};
+	~yearBlock(){printf("%s\n",__FUNCTION__);};
+
+
+
 
 private:
-	static unsigned char buf_head[YEAR_HEAD_BLOCK_SIZE*BLOCKSIZE];
-	/*年块初始化*/
-	virtual int year_init();
+	/*年块数据头*/
+
+
 };
 
 
